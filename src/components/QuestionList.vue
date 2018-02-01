@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import questions from '../api/stackoverflow-search-multiple.json'
+import { searchQuestions } from '../api/questions'
 import QuestionListItem from './QuestionListItem'
 
 export default {
@@ -17,8 +17,13 @@ export default {
   },
   data () {
     return {
-      questions: questions.items
+      questions: []
     }
+  },
+  mounted () {
+    searchQuestions('vue').then(response => {
+      this.questions = response.data.items
+    })
   }
 }
 </script>
