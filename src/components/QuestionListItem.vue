@@ -15,7 +15,9 @@
         {{ question.title }}
       </div>
       <div v-if="question.is_answered" class="actions">
-        <a :href="question.link">View answers</a>
+        <router-link
+          :to="{ name: 'AnsweredQuestion', params: { questionId: question.question_id }}"
+          >View answers</router-link>
       </div>
     </div>
   </div>
